@@ -1,0 +1,48 @@
+.container{
+    max-width: 580px;
+    margin: auto;
+
+}
+
+.wrapper{
+    background-color: blue;
+    width: 500px;
+    align-items: center;
+}
+.input-container{
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+    padding: 50px;
+}
+.input{
+    width:  200px;
+    height: 15px;
+    padding: 5px 10px 5px 10px;
+
+}
+.button1{
+    width: 30%;
+    height: 30%;
+    padding: 5px 10px 5px 10px;
+    background-color: darkorange;
+
+}
+.list{
+    padding-left: 50px;
+}
+.parent-ul li {
+    max-width: 332px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: white;
+}
+.parent-ul li .delete {
+    margin-left: 10px;
+}
+.delete{
+    background-color: darkorange;
+    padding: 5px;
+}
