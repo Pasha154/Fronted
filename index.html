@@ -6,9 +6,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<h2 class="direction">We would like to help you</h2>
+<div class="container">
+<form class="form" id="orderForm">
+<input type="text" id="firstName" name="firstName" placeholder="Name" class="name" />
+    <div class="error" id="firstNameError"></div>
+    <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Message" class="textarea"></textarea>
+    <div class="error" id="textareaError"></div>
+    <p>How to answer you?</p>
+<input type="phone" id="telephone" name="telephone" placeholder="Phone number" class="telephone"/>
+    <div class="error" id="phoneError"></div>
+    <input type="email" id="gmail" name="gmail" placeholder="Email" class="email">
+    <div class="error" id="gmailError"></div>
+    <button id="btnMessage" class="messageBtn">Send message</button>
 
+</form>
+</div>
 
 <script src="main.js"></script>
 </body>
