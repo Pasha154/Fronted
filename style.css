@@ -38,11 +38,14 @@
     justify-content: space-between;
     margin-bottom: 10px;
     color: white;
+    margin-left: 3px;
 }
-.parent-ul li .delete {
-    margin-left: 10px;
-}
+
 .delete{
     background-color: darkorange;
     padding: 5px;
+    position: relative;
+    left: 247px;
+    top: -41px;
 }
+

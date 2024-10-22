@@ -1,0 +1,172 @@
+Index: main.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const textInput = document.querySelector('#textInput');\r\nconst addTooList = document.querySelector('#addTodoList');\r\nconst todoList = document.querySelector(\"#todoList\");\r\n\r\naddTooList.addEventListener('click', ()=>{\r\n    const li = document.createElement('li');\r\n    li.className='todo-li-item';\r\n    const deleteButton = document.createElement('button');\r\n    deleteButton.className = 'delete'\r\n    deleteButton.innerText = 'Delete';\r\n    li.innerText = textInput.value;\r\n    todoList.appendChild(li);\r\n    li.appendChild(deleteButton);\r\n    textInput.value = '';\r\n    deleteButton.addEventListener('click', (e)=>{\r\n       if (e.target.className === 'delete'){\r\n           li.remove();\r\n       }\r\n    })\r\n\r\n})\r\n\r\ntodoList.addEventListener('click', (e) => {\r\n    if (e.target.classList.contains('delete')) {\r\n        const li = e.target.parentElement;\r\n        li.remove();\r\n    }\r\n});\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.js b/main.js
+--- a/main.js	(revision 9536e96619f12157d854ba550f0752226a4e0bd4)
++++ b/main.js	(date 1729436582233)
+@@ -3,6 +3,11 @@
+ const todoList = document.querySelector("#todoList");
+ 
+ addTooList.addEventListener('click', ()=>{
++    const checkbox = document.createElement('input');
++    checkbox.type = "checkbox";
++    checkbox.className = "checkinput";
++    checkbox.style.position = 'relative';
++    checkbox.style.left = '-167px';
+     const li = document.createElement('li');
+     li.className='todo-li-item';
+     const deleteButton = document.createElement('button');
+@@ -10,6 +15,7 @@
+     deleteButton.innerText = 'Delete';
+     li.innerText = textInput.value;
+     todoList.appendChild(li);
++    li.appendChild(checkbox);
+     li.appendChild(deleteButton);
+     textInput.value = '';
+     deleteButton.addEventListener('click', (e)=>{
+@@ -20,9 +26,4 @@
+ 
+ })
+ 
+-todoList.addEventListener('click', (e) => {
+-    if (e.target.classList.contains('delete')) {
+-        const li = e.target.parentElement;
+-        li.remove();
+-    }
+-});
++
+Index: style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.container{\r\n    max-width: 580px;\r\n    margin: auto;\r\n\r\n}\r\n\r\n.wrapper{\r\n    background-color: blue;\r\n    width: 500px;\r\n    align-items: center;\r\n}\r\n.input-container{\r\n    display: flex;\r\n    align-items:center ;\r\n    justify-content: center;\r\n    padding: 50px;\r\n}\r\n.input{\r\n    width:  200px;\r\n    height: 15px;\r\n    padding: 5px 10px 5px 10px;\r\n\r\n}\r\n.button1{\r\n    width: 30%;\r\n    height: 30%;\r\n    padding: 5px 10px 5px 10px;\r\n    background-color: darkorange;\r\n\r\n}\r\n.list{\r\n    padding-left: 50px;\r\n}\r\n.parent-ul li {\r\n    max-width: 332px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    margin-bottom: 10px;\r\n    color: white;\r\n}\r\n.parent-ul li .delete {\r\n    margin-left: 10px;\r\n}\r\n.delete{\r\n    background-color: darkorange;\r\n    padding: 5px;\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/style.css b/style.css
+--- a/style.css	(revision 9536e96619f12157d854ba550f0752226a4e0bd4)
++++ b/style.css	(date 1729436337035)
+@@ -32,12 +32,13 @@
+     padding-left: 50px;
+ }
+ .parent-ul li {
+-    max-width: 332px;
++    max-width: 328px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-bottom: 10px;
+     color: white;
++    padding-left: 4px;
+ }
+ .parent-ul li .delete {
+     margin-left: 10px;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"62f48af5-42f2-475d-a24c-ba29f2a4f86b\" name=\"Changes\" comment=\".\">\r\n      <change afterPath=\"$PROJECT_DIR$/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/main.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/main.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"Pasha154\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/Pasha154/Fronted.git\",\r\n    \"accountId\": \"c7b42382-ed5e-4a3e-987c-06fca4a55959\"\r\n  }\r\n}]]></component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 3\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2nNCJltB49afzzfzlbNf3PYAWG8\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"l12h3\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-WS-242.21829.149\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\".\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1728594974131</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1728594974131</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"62f48af5-42f2-475d-a24c-ba29f2a4f86b\" name=\"Changes\" comment=\".\" />\r\n      <created>1728804101327</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1728804101327</updated>\r\n      <workItem from=\"1728804107243\" duration=\"7668000\" />\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\".\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\".\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 9536e96619f12157d854ba550f0752226a4e0bd4)
++++ b/.idea/workspace.xml	(date 1729436573892)
+@@ -5,10 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="62f48af5-42f2-475d-a24c-ba29f2a4f86b" name="Changes" comment=".">
+-      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -25,38 +25,38 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "Pasha154"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;Pasha154&quot;
+   }
+-}]]></component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/Pasha154/Fronted.git",
+-    "accountId": "c7b42382-ed5e-4a3e-987c-06fca4a55959"
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/Pasha154/Fronted.git&quot;,
++    &quot;accountId&quot;: &quot;c7b42382-ed5e-4a3e-987c-06fca4a55959&quot;
+   }
+-}]]></component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 3
+-}]]></component>
++}</component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 3
++}</component>
+   <component name="ProjectId" id="2nNCJltB49afzzfzlbNf3PYAWG8" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "l12h3",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;l12h3&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+Index: index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\"\r\n          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\r\n    <title>Document</title>\r\n    <link rel=\"stylesheet\" href=\"style.css\">\r\n</head>\r\n<body>\r\n<div class=\"container\">\r\n    <div class=\"wrapper\">\r\n        <div class=\"input-container\">\r\n            <input type=\"text\" id=\"textInput\" class=\"input\" >\r\n            <button id=\"addTodoList\" class=\"button1\">Add Task</button>\r\n        </div>\r\n        <div class=\"list\">\r\n<ul id=\"todoList\" class=\"parent-ul\">\r\n    <li >Task 1 <button class=\"delete\">Видалити</button></li>\r\n    <li >Task 2 <button class=\"delete\">Видалити</button></li>\r\n    <li >Task 3 <button class=\"delete\">Видалити</button></li>\r\n</ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script src=\"main.js\"></script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/index.html b/index.html
+--- a/index.html	(revision 9536e96619f12157d854ba550f0752226a4e0bd4)
++++ b/index.html	(date 1729435172253)
+@@ -17,9 +17,7 @@
+         </div>
+         <div class="list">
+ <ul id="todoList" class="parent-ul">
+-    <li >Task 1 <button class="delete">Видалити</button></li>
+-    <li >Task 2 <button class="delete">Видалити</button></li>
+-    <li >Task 3 <button class="delete">Видалити</button></li>
++
+ </ul>
+         </div>
+     </div>
