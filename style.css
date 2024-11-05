@@ -1,0 +1,16 @@
+
+
+#weather {
+    background-color: blueviolet;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+}
+#weather button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
