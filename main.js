@@ -1,3 +1,8 @@
+// noinspection JSAnnotator
+import {createCommentElement, clearComment, updateButtonLabel} from "./dom";
+import {loadComments} from "./api";
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const postsContainer = document.getElementById("postsContainer");
     const postForm = document.getElementById("postForm");
@@ -32,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         postsContainer.appendChild(postCard);
     }
 
-
     window.loadComments = async (postId, button) => {
         const commentsContainer = document.getElementById(`comments-${postId}`);
 
@@ -62,50 +66,68 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    postForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
 
-        const title = document.getElementById("postTitle").value;
-        const body = document.getElementById("postBody").value;
+            /*window. = async (postId, button) => {
+                const commentsContainer = document.getElementById(`comments-${postId}`);
+                if (commentsContainer.innerHTML) {
+                    clearComment(commentsContainer);
+                    updateButtonLabel(button, false);
+                    return;
+                }
+                try {
+                    const commets = await loadPosts(postId);
 
-        const postData = {
-            title: title,
-            body: body,
-            userId: 1
-        };
+                    comments.forEach(comment => {
+                        const commentElement = createCommentElement(comment);
+                        commentsContainer.appendChild(commentElement);
+                    });
 
-        try {
-            const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(postData)
-            });
-
-            if (response.ok) {
-                const newPost = await response.json();
+                    updateButtonLabel(button, true); // Корректно завершаем try-блок
+                } catch (error) {
+                    console.error(error.message);
+                }
 
 
-                displayPost(newPost);
+                };
+            })*/
+postForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
+    const title = document.getElementById("postTitle").value;
+    const body = document.getElementById("postBody").value;
 
-                messageContainer.textContent = "Пост створено успішно";
+    const postData = {
+        title: title,
+        body: body,
+        userId: 1
+    };
 
+    try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postData)
+        });
 
-                postForm.reset();
-                setTimeout(() => {
-                    messageContainer.textContent = "";
-                }, 3000);
-            } else {
-                messageContainer.textContent = "Не вдалося створити пост";
-            }
-        } catch (error) {
-            console.error("Помилка при створенні поста:", error);
-            messageContainer.textContent = "Сталася помилка. Спробуйте ще раз.";
+        if (response.ok) {
+            const newPost = await response.json();
+
+            displayPost(newPost);
+
+            messageContainer.textContent = "Пост створено успішно";
+
+            postForm.reset();
+            setTimeout(() => {
+                messageContainer.textContent = "";
+            }, 3000);
+        } else {
+            messageContainer.textContent = "Не вдалося створити пост";
         }
-    });
+    } catch (error) {
+        console.error("Помилка при створенні поста:", error);
+        messageContainer.textContent = "Сталася помилка. Спробуйте ще раз.";
+    }
+})})
 
-
-    loadPosts();
-});
