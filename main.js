@@ -1,133 +1,41 @@
-// noinspection JSAnnotator
-import {createCommentElement, clearComment, updateButtonLabel} from "./dom";
-import {loadComments} from "./api";
+import { loadPosts, loadComments, createPost } from "./api.js";
+import {displayComments, displayPost, getPostData, addPost, showMessage} from "./dom.js";
 
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const postsContainer = document.getElementById("postsContainer");
-    const postForm = document.getElementById("postForm");
-    const messageContainer = document.getElementById("message");
 
 
-    async function loadPosts() {
-        try {
-            const response = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=10");
-            const posts = await response.json();
+    //Posts
+    const posts = await loadPosts();
+    posts.forEach(post => displayPost(post));
 
-            posts.forEach(post => {
-                displayPost(post);
-            });
-        } catch (error) {
-            console.error("Помилка при завантаженні постів:", error);
-        }
-    }
+    //Comments
+    postsContainer.addEventListener('click', async (e) => {
+        const postId = e.target.getAttribute("id");
 
+        const comments = await loadComments(postId);
+        displayComments(comments, postId);
+    });
 
-    function displayPost(post) {
-        const postCard = document.createElement("div");
-        postCard.className = "post";
-
-        postCard.innerHTML = `
-      <h2>${post.title}</h2>
-      <p>${post.body}</p>
-      <button class="load-comments" onclick="loadComments(${post.id}, this)">Завантажити коментарі</button>
-      <div class="comments" id="comments-${post.id}"></div>
-    `;
-
-        postsContainer.appendChild(postCard);
-    }
-
-    window.loadComments = async (postId, button) => {
-        const commentsContainer = document.getElementById(`comments-${postId}`);
-
-        if (commentsContainer.innerHTML) {
-            commentsContainer.innerHTML = ""; // Очищення коментарів
-            button.textContent = "Завантажити коментарі";
-            return;
-        }
-
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments?_limit=2`);
-            const comments = await response.json();
-
-            comments.forEach(comment => {
-                const commentDiv = document.createElement("div");
-                commentDiv.className = "comment";
-                commentDiv.innerHTML = `
-          <p><strong>${comment.name}</strong> (${comment.email}):</p>
-          <p>${comment.body}</p>
-        `;
-                commentsContainer.appendChild(commentDiv);
-            });
-
-            button.textContent = "Сховати коментарі";
-        } catch (error) {
-            console.error("Помилка при завантаженні коментарів:", error);
-        }
-    };
+    //Form TODO
 
 
-            /*window. = async (postId, button) => {
-                const commentsContainer = document.getElementById(`comments-${postId}`);
-                if (commentsContainer.innerHTML) {
-                    clearComment(commentsContainer);
-                    updateButtonLabel(button, false);
-                    return;
-                }
-                try {
-                    const commets = await loadPosts(postId);
+    document.addEventListener("DOMContentLoaded", () => {
+        const postForm = document.getElementById("postForm");
 
-                    comments.forEach(comment => {
-                        const commentElement = createCommentElement(comment);
-                        commentsContainer.appendChild(commentElement);
-                    });
+        postForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-                    updateButtonLabel(button, true); // Корректно завершаем try-блок
-                } catch (error) {
-                    console.error(error.message);
-                }
-
-
-                };
-            })*/
-postForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const title = document.getElementById("postTitle").value;
-    const body = document.getElementById("postBody").value;
-
-    const postData = {
-        title: title,
-        body: body,
-        userId: 1
-    };
-
-    try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postData)
+            try {
+                const postData = getPostData();
+                const newPost = await createPost(postData);
+                addPost(newPost);
+                showMessage("Пост створено успішно!", "success");
+            } catch (error) {
+                showMessage("Сталася помилка. Спробуйте ще раз.", "error");
+            }
         });
+    });
 
-        if (response.ok) {
-            const newPost = await response.json();
 
-            displayPost(newPost);
-
-            messageContainer.textContent = "Пост створено успішно";
-
-            postForm.reset();
-            setTimeout(() => {
-                messageContainer.textContent = "";
-            }, 3000);
-        } else {
-            messageContainer.textContent = "Не вдалося створити пост";
-        }
-    } catch (error) {
-        console.error("Помилка при створенні поста:", error);
-        messageContainer.textContent = "Сталася помилка. Спробуйте ще раз.";
-    }
-})})
-
+});
