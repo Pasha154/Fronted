@@ -5,12 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62f48af5-42f2-475d-a24c-ba29f2a4f86b" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/beckend/beckend_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/beckend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/beckend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/js/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/js/dom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,8 +54,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;l23h1&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -65,6 +84,14 @@
       <workItem from="1729268150229" duration="731000" />
       <workItem from="1732896633364" duration="270000" />
       <workItem from="1732896942120" duration="127000" />
+      <workItem from="1733173768944" duration="2587000" />
+      <workItem from="1733237768288" duration="4728000" />
+      <workItem from="1733259503607" duration="1294000" />
+      <workItem from="1733261180983" duration="713000" />
+      <workItem from="1733429851865" duration="2082000" />
+      <workItem from="1733432644561" duration="2592000" />
+      <workItem from="1733580534435" duration="946000" />
+      <workItem from="1733650976113" duration="4382000" />
     </task>
     <servers />
   </component>
